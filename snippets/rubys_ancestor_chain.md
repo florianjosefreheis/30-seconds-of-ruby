@@ -14,7 +14,7 @@ Here is the ancestor chain of the String class:
 
 ``` ruby
 irb> String.ancestors
-=> [String, Comparable, Object, Kernel, BasicObject]
+ => [String, Comparable, Object, Kernel, BasicObject]
 ```
 
 ##### Additional links
