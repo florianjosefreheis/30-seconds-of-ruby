@@ -2,7 +2,7 @@
 
 Always wondered how to see Ruby's class hierarchy? Simply call `ancestors` on a class to see the ancestor chain.
 
-The return array containes the folowwing order:
+The return array containes the following order:
 
 * the calling class
 * its included modules
