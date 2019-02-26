@@ -6,7 +6,7 @@ Ruby snippets you can understand in 30 seconds or less.
 
 Inspired by [30-seconds-of-knowledge](https://github.com/petrovicstefanrs/30_seconds_of_knowledge/).
 
-<hr></hr>
+[Element: hr]
 
 ### Ruby's Ancestor Chain
 
@@ -59,5 +59,115 @@ irb> name.methods
  ```
 
 This will return an array of symbols (names) of all publicly accessible methods of the object and its ancestors.
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### BasicObject
+
+The BasicObject class is the top parent of all class. It is a blank instance of class `class` with no superclass and contains a minimum of methods for object creation and comparison.
+
+``` bash
+irb> class User
+irb> end
+ => nil
+irb> User
+ => User
+irb> User.class
+ => Class
+irb> User.superclass
+ => Object
+irb> Object.ancestors
+ => [Object, Kernel, BasicObject]
+irb> BasicObject.class
+ => Class
+irb> BasicObject.superclass
+ => nil
+irb> BasicObject.ancestors
+ => [BasicObject]
+```
+
+##### Additional links
+
+* [Ruby Doc - BasicObject](https://ruby-doc.org/core-1.9.3/BasicObject.html)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Hash#dig
+
+Ever wondered if there is a better way how you can traverse through multi-layer hashes or arrays to retrieve a specific value? Luckily Ruby 2.3 introduced a new method called `dig`.
+
+```ruby
+  catalogue = {
+    drinks: {
+      apple_juice: {
+        stock: 8,
+        price_per_unit: 2.4
+      },
+      orange_juice: {
+        stock: 4,
+        price_per_unit: 2.2
+      }
+    }
+  }
+```
+
+Given the above hash, we would access the price per unit of the orange juice by the below line.
+
+```ruby
+  catalogue[:drinks][:carrot_juice][:price_per_unit]
+  => NoMethodError: undefined method `[]' for nil:NilClass
+```
+
+To mitigate Rails to throw an error we need to check the existence of each key while navigating through the hash structure.
+
+```ruby
+  catalogue[:drinks] && catalogue[:drinks][:carrot_juice] && catalogue[:drinks][:carrot_juice][:price_per_unit]
+```
+
+By using `dig` we follow **DRY** and retrieve the value of each key object by dealing smoothly with nil values.
+
+```ruby
+  catalogue.dig(:drinks, :carrot_juice, :price_per_unit)
+  => nil
+  catalogue.dig(:drinks, :apple_juice, :price_per_unit)
+  => 2.4
+```
+
+##### Additional links
+
+* [Ruby Doc - Hash#dig](https://ruby-doc.org/core-2.3.0_preview1/Hash.html#method-i-dig)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Mehtod Naming Conventions "!" vs. "?"
+
+In Ruby there are two common naming conventions for methods. Either you end a method name with a **!** or **?**.
+Methods ended by a **!** are called bang methods and often modifies the original object.
+
+``` bash
+irb> book_title = "example book title"
+ => "example book title"
+irb> puts book_title.capitalize!
+Example book title
+ => nil
+irb> puts book_title
+Example book title
+ => nil
+irb>
+```
+
+A famous example is `merge` vs `merge!` when dealing with params, whereas the former method will return the params and the latest modifies the original params.
+
+The question mark at the end of a method name indicates that we can expect a boolean as return value.
+
+```bash
+irb> array = []
+ => []
+irb> array.empty?
+ => true
+irb> user = { 'first_name' => 'Bob', 'last_name' => 'Carlton' }
+irb> user.has_key?('first_name')
+ => true
+```
 
 [⬆ Back to top](#30-seconds-of-ruby)
