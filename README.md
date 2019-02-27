@@ -6,7 +6,7 @@ Ruby snippets you can understand in 30 seconds or less.
 
 Inspired by [30-seconds-of-knowledge](https://github.com/petrovicstefanrs/30_seconds_of_knowledge/).
 
-[Element: hr]
+<hr></hr>
 
 ### Ruby's Ancestor Chain
 
@@ -168,6 +168,56 @@ irb> array.empty?
 irb> user = { 'first_name' => 'Bob', 'last_name' => 'Carlton' }
 irb> user.has_key?('first_name')
  => true
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Kernel (module)
+
+The Kernel module is included by class Object and provides methods that are globally available, hence every Ruby object has access to them. These methods are called without a receiver and only act on the passed arguments.
+
+Famouse representative of the Kernel module are:
+
+* Array
+* Hash
+* Integer
+* Hash
+* p, print and puts
+
+##### Additional links
+
+* [Ruby Doc - Kernel](https://ruby-doc.org/core-2.6.1/Kernel.html)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Where do methods live?
+
+Ever wondered how you can find out where exactly a method lives inside Ruby?
+
+Ruby offers two helpful methods here. By passing the name of the method as a symbol to `owner` will reveal where a method lives inside Ruby. If you curious about who receives s specific method, just pass the name again as a symbol to `receiver`.
+
+``` bash
+irb> method(:initialize).owner
+ => BasicObject
+irb> method(:initialize).receiver
+ => main
+```
+
+##### Additional links
+
+* [Ruby Doc - owner](https://apidock.com/ruby/v1_9_3_392/Method/owner)
+* [Ruby Doc - receiver](https://apidock.com/ruby/v1_9_3_392/Method/receiver)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Ruby -e
+
+The `ruby` command is mostly known for running a ruby app or script. But it also has a number of interesting options to offer.
+
+Execute a single line code snippet just by using the -e flag:
+
+```bash
+  ruby -e '[1, 2, 3].each do |e| puts e end'
 ```
 
 [⬆ Back to top](#30-seconds-of-ruby)
