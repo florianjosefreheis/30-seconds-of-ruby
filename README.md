@@ -267,3 +267,64 @@ For a given hash it will return an array of the values associated with the given
 * [Ruby Doc - Hash#values_at](https://apidock.com/ruby/Hash/values_at)
 
 [⬆ Back to top](#30-seconds-of-ruby)
+
+### to_s vs. to_str
+
+`to_s` is an explicit casting helper and is used to transform a value from one type to another. `to_str` is an implicit casting helper
+with the same purpose. The difference is that the former will always return a string whereas the later will result in an error or data loss
+if the value it acts on does not act like the type we are casting. Ruby will only return a value when objects act like the type.
+Ruby is very strict when using an implicit casting helper to ensure that the value acts like the type we want.
+
+```bash
+irb> [1, 2].to_s
+ => "[1, 2]"
+irb> [1, 2].to_str
+NoMethodError: undefined method `to_str` for [1, 2]:Array
+Did you mean? to_s
+irb> :name.to_s
+ => "name"
+irb> :name.to_str
+NoMethodError: undefined method `to_str` for :name:Symbol
+Did you mean? to_s
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### to_i vs. to_int
+
+`to_i` is an explicit casting helper and is used to transform a value from one type to another. `to_int` is an implicit casting helper
+with the same purpose. The difference is that the former will always return a string whereas the later will result in an error or data loss
+if the value it acts on does not act like the type we are casting. Ruby will only return a value when objects act like the type.
+Ruby is very strict when using an implicit casting helper to ensure that the value acts like the type we want.
+
+```bash
+irb> 19.99.to_i
+ => 19
+irb> 19.99.to_int
+ => 19
+irb> '19.99'.to_i
+ => 19
+irb> '19.99'.to_int
+NoMethodError: undefined method `to_int` for "String":String
+Did you mean?  to_i
+               to_str
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### to_a vs. to_ary
+
+`to_a` is an explicit casting helper and is used to transform a value from one type to another. `to_ary` is an implicit casting helper
+with the same purpose. The difference is that the former will always return a string whereas the later will result in an error or data loss
+if the value it acts on does not act like the type we are casting. Ruby will only return a value when objects act like the type.
+Ruby is very strict when using an implicit casting helper to ensure that the value acts like the type we want.
+
+```bash
+irb > { key: :value }.to_a
+ => [[:key, :value]]
+irb > { key: :value }.to_ary
+NoMethodError: undefined method `to_ary` for {:key=>:value}:Hash
+Did you mean?  to_a
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
