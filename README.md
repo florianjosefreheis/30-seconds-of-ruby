@@ -445,3 +445,69 @@ irb> user.fetch(:email){ |e| "no #{e} added"}
 * [Ruby Doc - Hash#fetch](https://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch)
 
 [⬆ Back to top](#30-seconds-of-ruby)
+
+### Array#zip
+
+Converts any arguments to arrays, then merges elements of self with corresponding elements from each argument.
+
+This generates a sequence of ary.size n-element arrays, where n is one more than the count of arguments.
+
+If the size of any argument is less than the size of the initial array, nil values are supplied.
+
+If a block is given, it is invoked for each output array, otherwise an array of arrays is returned.
+
+```bash
+irb> first_names = ['George', 'Marcus', 'Brian']
+ => ["George", "Marcus", "Brian"]
+irb> last_names = ['Massy', 'Windmil']
+ => ["Massy", "Windmil"]
+irb> first_names.zip(last_names)
+ => [["George", "Massy"], ["Marcus", "Windmil"], ["Brian", nil]]
+```
+
+##### Additional links
+
+* [Ruby Doc - Array#zip](https://ruby-doc.org/core-2.2.0/Array.html#method-i-zip)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Adding uniq values to an array
+
+Let's say we wanna add a new element to an array but we want to make sure to keep each element uniq. One way to achive this would be:
+
+```bash
+irb> alphabet = ['a','b','c']
+ => ["a", "b", "c"]
+irb> alphabet << 'c'
+ => ["a", "b", "c", "c"]
+irb> alphabet.uniq
+ => ["a", "b", "c"]
+```
+
+Luckily Ruby offers Bitwise OR operator:
+
+```ruby
+x |= y
+is shorthand for:
+x = x | y
+```
+
+So our example from above would become:
+
+```bash
+irb> alphabet = ['a','b','c']
+ => ["a", "b", "c"]
+irb> alphabet | ['c']
+ => ["a", "b", "c"]
+```
+
+We can also assign more then one element at the same time:
+
+```bash
+irb> alphabet = ['a','b','c']
+ => ["a", "b", "c"]
+irb> alphabet | ['c','d']
+ => ["a", "b", "c", "d"]
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
