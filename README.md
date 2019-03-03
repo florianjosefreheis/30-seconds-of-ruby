@@ -389,3 +389,59 @@ irb> numbers.count(&:even?)
 * [Ruby Doc - Array#count](https://ruby-doc.org/core-2.2.0/Array.html#method-i-count)
 
 [⬆ Back to top](#30-seconds-of-ruby)
+
+### clone vs dup
+
+Both methods are used to produce a shallow copy of obj—the instance variables of obj are copied, but not the objects they reference. `clone` copies the frozen and tainted state of obj whereas `dup` copies the tainted state of obj.
+
+In general, clone and dup may have different semantics in the descendant classes. While clone is used to duplicate an object, including its internal state, dup typically uses the class of the descendant object to create the new instance. When using dup, any modules that the object has been extended with will not be copied.
+
+```bash
+irb> array = ['a','b','c']
+ => ["a", "b", "c"]
+irb> array.freeze
+ => ["a", "b", "c"]
+irb> array_clone = array.clone
+ => ["a", "b", "c"]
+irb> a_clone << "d"
+RuntimeError: cant modify frozen Array
+irb> array_dup = array.dup
+ => ["a", "b", "c"]
+irb> a_dup << "d"
+ => ["a", "b", "c", "d"]
+```
+
+##### Additional links
+
+* [Ruby Doc - #clone](https://ruby-doc.org/core-2.0.0/Object.html#method-i-clone)
+* [Ruby Doc - #dup](https://ruby-doc.org/core-2.6.1/Object.html#method-i-dup)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Hash#fetch
+
+Returns a value from the hash for the given key. If the key can't be found, there are several options:
+
+- will raise a KeyError exception when no arguments given
+- if a default is given, then that will be returned
+- if the optional code block is specified, then that will be run and its result returned.
+
+```bash
+irb> user = {'first_name': 'Dummy', 'last_name': 'User'}
+ => {:first_name=>"Dummy", :last_name=>"User"}
+irb> user.fetch(:first_name)
+ => "Dummy"
+irb> user.fetch(:email)
+KeyError: key not found: :email
+  from (irb):5:in `fetch'
+irb> user.fetch(:email, 'no email added')
+ => "no email added"
+irb> user.fetch(:email){ |e| "no #{e} added"}
+ => "no email added"
+```
+
+##### Additional links
+
+* [Ruby Doc - Hash#fetch](https://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch)
+
+[⬆ Back to top](#30-seconds-of-ruby)
