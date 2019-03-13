@@ -139,7 +139,7 @@ By using `dig` we follow **DRY** and retrieve the value of each key object by de
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
-### Mehtod Naming Conventions "!" vs. "?"
+### Method Naming Conventions "!" vs. "?"
 
 In Ruby there are two common naming conventions for methods. Either you end a method name with a **!** or **?**.
 Methods ended by a **!** are called bang methods and often modifies the original object.
@@ -169,6 +169,8 @@ irb> user = { 'first_name' => 'Bob', 'last_name' => 'Carlton' }
 irb> user.has_key?('first_name')
  => true
 ```
+
+* [Awesome post about ruby conventions](https://blog.codeminer42.com/and-understanding-one-of-rubys-coolest-naming-conventions-5a9300b75605)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -265,6 +267,37 @@ For a given hash it will return an array of the values associated with the given
 
 * [Ruby Doc - Array#values_at](https://apidock.com/ruby/Array/values_at)
 * [Ruby Doc - Hash#values_at](https://apidock.com/ruby/Hash/values_at)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### *Splat operators
+
+The splat operator has almost endless uses. But the main idea is that whenever you don’t want to specify the number of arguments you have, you would use a splat operator. The simplest example would be something like this: 
+
+```bash
+irb> def foo(*args)
+irb>  args
+irb> end
+ => :foo
+irb> foo(1,5,9)
+[1, 5, 9]
+ => [1, 5, 9] 
+```
+
+You can also use the splat operator to grab any segment of an array:
+
+```bash
+irb> first, second, *last = ["x", "y", "w", "z"] 
+ => ["x", "y", "w", "z"]
+irb> first
+ => "x"
+irb> second
+ => "y"
+irb> last
+ => ["w", "z"]
+```
+
+* [Splat operators](https://medium.freecodecamp.org/rubys-splat-and-double-splat-operators-ceb753329a78)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
