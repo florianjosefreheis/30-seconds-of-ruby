@@ -1,7 +1,6 @@
 ## Enumerable#none?
 Passes each element of the collection to the given block. The method returns true if the block never returns true for all elements. If the block is not given, `none?` will return true only if none of the collection members is true.
 
-
 ```bash
 irb> a = []
  => []
