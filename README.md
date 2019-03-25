@@ -258,7 +258,7 @@ For a given hash it will return an array of the values associated with the given
   irb> fruits = { 'orange' => '$2.00', 'apple' => '$3.00', 'grapes' => '$2.50' }
    => => {"orange"=>"$2.00", "apple"=>"$3.00", "grapes"=>"$2.50"}
   irb> fruits.values_at('orange')
-   => ["$2.00"] 
+   => ["$2.00"]
 ```
 
  ##### Additional links
@@ -356,6 +356,95 @@ irb> button.next
 ##### Additional links
 
 * [Ruby Doc - Enumerable#cycle](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-cycle)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Enumerable#all?
+Passes each element of the collection to the given block. The method returns true if the block never returns false or nil. If the block is not given, Ruby adds an implicit block of `{ |obj| obj }` which will cause `all?` to return true when none of the collection members are false or nil.
+
+```bash
+irb> a = [1, 2, 3]
+ => [1, 2, 3]
+irb> a.all?(&:integer?)
+ => true
+irb> a.all?(&:odd?)
+ => false
+irb> a.all?
+ => true
+irb> a = [1, 2, nil]
+ => [1, 2, nil]
+a.all?
+ => false
+```
+
+##### Additional links
+
+* [Ruby Doc - Enumerable#all?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-all-3F)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+## Enumerable#none?
+Passes each element of the collection to the given block. The method returns true if the block never returns true for all elements. If the block is not given, `none?` will return true only if none of the collection members is true.
+
+
+```bash
+irb> a = []
+ => []
+irb> a.none?
+ => true
+irb> a = ['a', 'bb', 'c']
+ => ["a", "bb", "c"]
+irb> a.none? { |e| e.length > 1 }
+ => false
+irb> (1..10).none?(&:nil?)
+ => true
+```
+
+##### Additional links
+
+* [Ruby Doc - Enumerable#none?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-none-3F)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+## Enumerable#any?
+Passes each element of the collection to the given block. The method returns true if the block ever returns a value other than false or nil. If the block is not given, Ruby adds an implicit block of `{ |obj| obj }` that will cause `any?` to return true if at least one of the collection members is not false or nil.
+
+```bash
+irb> a = []
+ => []
+irb> a.any?
+ => false
+irb> a = [1, 'a']
+ => [1, "a"]
+irb> a.any? { |e| e.class == String }
+ => true
+irb> h = { a: 1, b: 2 }
+ => {:a=>1, :b=>2}
+irb> h.any? { |k, v| v.odd? }
+ => true
+```
+
+* [Ruby Doc - Enumerable#any?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-any-3F)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+## Enumerable#one?
+Passes each element of the collection to the given block. The method returns true if the block returns true exactly once. If the block is not given, `one?` will return true only if exactly one of the collection members is true.
+
+```bash
+irb> a = [500]
+ => [500]
+irb> a.one?
+ => true
+irb> a.one? { |e| e < 100 }
+ => false
+irb> (1..4).one? { |n| n % 2 == 0 }
+ => false
+```
+
+##### Additional links
+
+* [Ruby Doc - Enumerable#one?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-one-3F)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
