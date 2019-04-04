@@ -590,7 +590,7 @@ irb> alphabet | ['c']
  => ["a", "b", "c"]
 ```
 
-We can also assign more then one element at the same time:
+We can also assign more than one element at the same time:
 
 ```bash
 irb> alphabet = ['a','b','c']
