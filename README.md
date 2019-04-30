@@ -139,7 +139,7 @@ By using `dig` we follow **DRY** and retrieve the value of each key object by de
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
-### Mehtod Naming Conventions "!" vs. "?"
+### Method Naming Conventions "!" vs. "?"
 
 In Ruby there are two common naming conventions for methods. Either you end a method name with a **!** or **?**.
 Methods ended by a **!** are called bang methods and often modifies the original object.
@@ -169,6 +169,10 @@ irb> user = { 'first_name' => 'Bob', 'last_name' => 'Carlton' }
 irb> user.has_key?('first_name')
  => true
 ```
+
+##### Additional links
+
+* [Awesome post about Ruby's conventions](https://blog.codeminer42.com/and-understanding-one-of-rubys-coolest-naming-conventions-5a9300b75605)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -345,6 +349,69 @@ Did you mean?  to_i
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
+### lamba vs. proc
+
+A **lambda** is a way to define a block & its parameters with some special syntax. You can save this **lambda** into a variable for later use.
+
+The syntax for defining a Ruby **lambda** looks like this:
+
+```bash
+irb > say_something = -> { puts "This is a lambda" }
+ => #<Proc:0x0000556829fa2fa8@(lambda)>
+```
+
+Defining a **lambda** won’t run the code inside it, just like defining a method won’t run the method, you need to use the call method for that.
+
+```bash
+irb > say_something = -> { puts "This is a lambda" }
+ => #<Proc:0x0000556829fa2fa8@(lambda)>
+irb > say_something.call
+ This is a lambda
+ => nil
+```
+
+**Procs** are a very similar concept. But one of the differences is how you create them.
+
+```bash
+irb > my_proc = Proc.new { |x| puts x }
+ => #<Proc:0x0000556829f8ad68@>
+```
+
+There is no dedicated **Lambda** class. A **lambda** is just a special **Proc** object. If you take a look at the instance methods from **Proc**, you will notice there is a `lambda?` method.
+
+```bash
+irb > my_proc = Proc.new { |x| puts x }
+ => #<Proc:0x0000556829f8ad68@>
+irb > my_proc.lambda?
+ => false
+irb > my_lambda = -> { puts "This is a lambda" }
+ => #<Proc:0x0000556829f59a60@(lambda)>
+irb > my_lambda.lambda?
+ => true
+```
+
+A **proc** behaves differently than a **lambda**, specially when it comes to arguments. Procs don’t care about the correct number of arguments, while lambdas will raise an exception.
+
+```bash
+irb > my_proc = Proc.new { |x,y| puts "I do not care about arguments!" }
+ => #<Proc:0x0000556829f8ad68@>
+irb > my_proc.call
+ I do not care about arguments!
+ => nil
+irb > my_lambda = -> x { "x = #{x}" }
+ => #<Proc:0x000056145b4325e0@(lambda)>
+irb > my_lambda.call
+ ArgumentError (wrong number of arguments (given 0, expected 1))
+irb > my_lambda.call(10)
+ => "x = 10"
+```
+
+##### Additional links
+
+* [Ruby Guides - Lambdas vs Procs](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
 ### to_a vs. to_ary
 
 `to_a` is an explicit casting helper and is used to transform a value from one type to another. `to_ary` is an implicit casting helper
@@ -358,6 +425,49 @@ irb > { key: :value }.to_a
 irb > { key: :value }.to_ary
 NoMethodError: undefined method `to_ary` for {:key=>:value}:Hash
 Did you mean?  to_a
+```
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### map vs. each
+
+The way the `map` method works in Ruby is, it takes an enumerable object, (i.e. the object you call it on), and a block.
+
+Then, for each of the elements in the enumerable, it executes the block, passing it the current element as an argument. The result of evaluating the block is then used to construct the resulting array.
+
+In other words:
+
+> Applying map on an array returns a new array where each element is the result of evaluating the block with the element as an argument.
+
+```bash
+irb> a = [1, 2, 3]
+ => [1, 2, 3]
+irb> b = a.map { |n| n * 2 }
+ => [2, 4, 6]
+irb> b
+ => [2, 4, 6]
+```
+
+`each` is just another method on an object. That means that if you want to iterate over an array with `each`, you’re calling the `each` method on that array object.
+
+It takes a list as it’s first argument and a block as the second argument. For every element in the list, it runs the block passing it the current element as a parameter.
+
+You should use `each` when you want iteration but don’t care about what it returns.
+
+[1, 2, 3].each { |n| puts "Current number is: #{n}" }
+
+```bash
+irb> [1, 2, 3].each { |n| puts "Current number is: #{n}" }
+ Current number is: 1
+ Current number is: 2
+ Current number is: 3
+ => [1, 2, 3]
+irb> a = [1, 2, 3]
+ => [1, 2, 3]
+irb> b = a.each { |n| n * 2 }
+ => [1, 2, 3]
+irb> b
+ => [1, 2, 3]
 ```
 
 [⬆ Back to top](#30-seconds-of-ruby)
