@@ -1,12 +1,14 @@
-![RubyLogo](/ruby_logo.png)
-
 # 30 Seconds of Ruby
+
+![RubyLogo](/ruby_logo.png)
 
 Ruby snippets you can understand in 30 seconds or less.
 
 Inspired by [30-seconds-of-knowledge](https://github.com/petrovicstefanrs/30_seconds_of_knowledge/).
 
-<hr></hr>
+<hr>
+
+## Snippets
 
 ### Ruby's Ancestor Chain
 
@@ -14,22 +16,22 @@ Always wondered how to see Ruby's class hierarchy? Simply call `ancestors` on a 
 
 The return array contains the following order:
 
-* the calling class
-* its included modules
-* its parent class
-* the included modules of its parents class
-* the parent class of its parent class
+- the calling class
+- its included modules
+- its parent class
+- the included modules of its parents class
+- the parent class of its parent class
 
 Here is the ancestor chain of the String class:
 
-``` ruby
+```ruby
 irb> String.ancestors
 => [String, Comparable, Object, Kernel, BasicObject]
 ```
 
 ##### Additional links
 
-* [Ruby Doc - Ancestors](https://ruby-doc.org/core-2.6.1/Module.html#method-i-ancestors)
+- [Ruby Doc - Ancestors](https://ruby-doc.org/core-2.6.1/Module.html#method-i-ancestors)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -40,10 +42,10 @@ There are multiple versions of Ruby interpreters to choose from, each with a dif
 
 Common Ruby Interpreters:
 
-* Ruby MRI
-* JRuby
-* YARV
-* Rubinius
+- Ruby MRI
+- JRuby
+- YARV
+- Rubinius
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -51,12 +53,12 @@ Common Ruby Interpreters:
 
 If you've ever wondering what methods are available for a specific object, just call `.methods` on it:
 
-``` bash
+```bash
 irb> name = 'Bob'
  => "Bob"
 irb> name.methods
  => [:include?, :%, :unicode_normalize, :*, :+, :to_c, ...]
- ```
+```
 
 This will return an array of symbols (names) of all publicly accessible methods of the object and its ancestors.
 
@@ -66,7 +68,7 @@ This will return an array of symbols (names) of all publicly accessible methods 
 
 The BasicObject class is the top parent of all class. It is a blank instance of class `class` with no superclass and contains a minimum of methods for object creation and comparison.
 
-``` bash
+```bash
 irb> class User
 irb> end
  => nil
@@ -88,7 +90,7 @@ irb> BasicObject.ancestors
 
 ##### Additional links
 
-* [Ruby Doc - BasicObject](https://ruby-doc.org/core-1.9.3/BasicObject.html)
+- [Ruby Doc - BasicObject](https://ruby-doc.org/core-1.9.3/BasicObject.html)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -135,7 +137,7 @@ By using `dig` we follow **DRY** and retrieve the value of each key object by de
 
 ##### Additional links
 
-* [Ruby Doc - Hash#dig](https://ruby-doc.org/core-2.3.0_preview1/Hash.html#method-i-dig)
+- [Ruby Doc - Hash#dig](https://ruby-doc.org/core-2.3.0_preview1/Hash.html#method-i-dig)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -144,7 +146,7 @@ By using `dig` we follow **DRY** and retrieve the value of each key object by de
 In Ruby there are two common naming conventions for methods. Either you end a method name with a **!** or **?**.
 Methods ended by a **!** are called bang methods and often modifies the original object.
 
-``` bash
+```bash
 irb> book_title = "example book title"
  => "example book title"
 irb> puts book_title.capitalize!
@@ -172,7 +174,7 @@ irb> user.has_key?('first_name')
 
 ##### Additional links
 
-* [Awesome post about Ruby's conventions](https://blog.codeminer42.com/and-understanding-one-of-rubys-coolest-naming-conventions-5a9300b75605)
+- [Awesome post about Ruby's conventions](https://blog.codeminer42.com/and-understanding-one-of-rubys-coolest-naming-conventions-5a9300b75605)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -182,15 +184,15 @@ The Kernel module is included by class Object and provides methods that are glob
 
 Famouse representative of the Kernel module are:
 
-* Array
-* Hash
-* Integer
-* Hash
-* p, print and puts
+- Array
+- Hash
+- Integer
+- Hash
+- p, print and puts
 
 ##### Additional links
 
-* [Ruby Doc - Kernel](https://ruby-doc.org/core-2.6.1/Kernel.html)
+- [Ruby Doc - Kernel](https://ruby-doc.org/core-2.6.1/Kernel.html)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -200,7 +202,7 @@ Ever wondered how you can find out where exactly a method lives inside Ruby?
 
 Ruby offers two helpful methods here. By passing the name of the method as a symbol to `owner` will reveal where a method lives inside Ruby. If you curious about who receives s specific method, just pass the name again as a symbol to `receiver`.
 
-``` bash
+```bash
 irb> method(:initialize).owner
  => BasicObject
 irb> method(:initialize).receiver
@@ -209,8 +211,8 @@ irb> method(:initialize).receiver
 
 ##### Additional links
 
-* [Ruby Doc - owner](https://apidock.com/ruby/v1_9_3_392/Method/owner)
-* [Ruby Doc - receiver](https://apidock.com/ruby/v1_9_3_392/Method/receiver)
+- [Ruby Doc - owner](https://apidock.com/ruby/v1_9_3_392/Method/owner)
+- [Ruby Doc - receiver](https://apidock.com/ruby/v1_9_3_392/Method/receiver)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -235,11 +237,11 @@ irb> 123.digits
  => [3, 2, 1]
 irb> 14.digits(7)
  => [0, 2]
- ```
+```
 
- ##### Additional links
+##### Additional links
 
-* [Ruby Doc - Integer#digits](https://ruby-doc.org/core-2.4.0/Integer.html#method-i-digits)
+- [Ruby Doc - Integer#digits](https://ruby-doc.org/core-2.4.0/Integer.html#method-i-digits)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -265,16 +267,16 @@ For a given hash it will return an array of the values associated with the given
    => ["$2.00"]
 ```
 
- ##### Additional links
+##### Additional links
 
-* [Ruby Doc - Array#values_at](https://apidock.com/ruby/Array/values_at)
-* [Ruby Doc - Hash#values_at](https://apidock.com/ruby/Hash/values_at)
+- [Ruby Doc - Array#values_at](https://apidock.com/ruby/Array/values_at)
+- [Ruby Doc - Hash#values_at](https://apidock.com/ruby/Hash/values_at)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
 ### Splat operators
 
-The *splat operator has almost endless uses. But the main idea is that whenever you don’t want to specify the number of arguments you have, you would use a splat operator. The simplest example would be something like this: 
+The \*splat operator has almost endless uses. But the main idea is that whenever you don’t want to specify the number of arguments you have, you would use a splat operator. The simplest example would be something like this:
 
 ```bash
 irb> def foo(*args)
@@ -283,13 +285,13 @@ irb> end
  => :foo
 irb> foo(1,5,9)
 [1, 5, 9]
- => [1, 5, 9] 
+ => [1, 5, 9]
 ```
 
 You can also use the splat operator to grab any segment of an array:
 
 ```bash
-irb> first, second, *last = ["x", "y", "w", "z"] 
+irb> first, second, *last = ["x", "y", "w", "z"]
  => ["x", "y", "w", "z"]
 irb> first
  => "x"
@@ -301,7 +303,7 @@ irb> last
 
 ##### Additional links
 
-* [Splat operators](https://medium.freecodecamp.org/rubys-splat-and-double-splat-operators-ceb753329a78)
+- [Splat operators](https://medium.freecodecamp.org/rubys-splat-and-double-splat-operators-ceb753329a78)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -408,7 +410,7 @@ irb > my_lambda.call(10)
 
 ##### Additional links
 
-* [Ruby Guides - Lambdas vs Procs](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
+- [Ruby Guides - Lambdas vs Procs](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -498,11 +500,12 @@ irb> button.next
 
 ##### Additional links
 
-* [Ruby Doc - Enumerable#cycle](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-cycle)
+- [Ruby Doc - Enumerable#cycle](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-cycle)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
 ### Enumerable#all?
+
 Passes each element of the collection to the given block. The method returns true if the block never returns false or nil. If the block is not given, Ruby adds an implicit block of `{ |obj| obj }` which will cause `all?` to return true when none of the collection members are false or nil.
 
 ```bash
@@ -522,13 +525,13 @@ a.all?
 
 ##### Additional links
 
-* [Ruby Doc - Enumerable#all?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-all-3F)
+- [Ruby Doc - Enumerable#all?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-all-3F)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
 ## Enumerable#none?
-Passes each element of the collection to the given block. The method returns true if the block never returns true for all elements. If the block is not given, `none?` will return true only if none of the collection members is true.
 
+Passes each element of the collection to the given block. The method returns true if the block never returns true for all elements. If the block is not given, `none?` will return true only if none of the collection members is true.
 
 ```bash
 irb> a = []
@@ -545,11 +548,12 @@ irb> (1..10).none?(&:nil?)
 
 ##### Additional links
 
-* [Ruby Doc - Enumerable#none?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-none-3F)
+- [Ruby Doc - Enumerable#none?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-none-3F)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
 ## Enumerable#any?
+
 Passes each element of the collection to the given block. The method returns true if the block ever returns a value other than false or nil. If the block is not given, Ruby adds an implicit block of `{ |obj| obj }` that will cause `any?` to return true if at least one of the collection members is not false or nil.
 
 ```bash
@@ -567,11 +571,12 @@ irb> h.any? { |k, v| v.odd? }
  => true
 ```
 
-* [Ruby Doc - Enumerable#any?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-any-3F)
+- [Ruby Doc - Enumerable#any?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-any-3F)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
 ## Enumerable#one?
+
 Passes each element of the collection to the given block. The method returns true if the block returns true exactly once. If the block is not given, `one?` will return true only if exactly one of the collection members is true.
 
 ```bash
@@ -587,7 +592,7 @@ irb> (1..4).one? { |n| n % 2 == 0 }
 
 ##### Additional links
 
-* [Ruby Doc - Enumerable#one?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-one-3F)
+- [Ruby Doc - Enumerable#one?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-one-3F)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -618,7 +623,7 @@ irb> numbers.count(&:even?)
 
 ##### Additional links
 
-* [Ruby Doc - Array#count](https://ruby-doc.org/core-2.2.0/Array.html#method-i-count)
+- [Ruby Doc - Array#count](https://ruby-doc.org/core-2.2.0/Array.html#method-i-count)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -645,8 +650,8 @@ irb> a_dup << "d"
 
 ##### Additional links
 
-* [Ruby Doc - #clone](https://ruby-doc.org/core-2.0.0/Object.html#method-i-clone)
-* [Ruby Doc - #dup](https://ruby-doc.org/core-2.6.1/Object.html#method-i-dup)
+- [Ruby Doc - #clone](https://ruby-doc.org/core-2.0.0/Object.html#method-i-clone)
+- [Ruby Doc - #dup](https://ruby-doc.org/core-2.6.1/Object.html#method-i-dup)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -674,7 +679,7 @@ irb> user.fetch(:email){ |e| "no #{e} added"}
 
 ##### Additional links
 
-* [Ruby Doc - Hash#fetch](https://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch)
+- [Ruby Doc - Hash#fetch](https://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -699,7 +704,7 @@ irb> first_names.zip(last_names)
 
 ##### Additional links
 
-* [Ruby Doc - Array#zip](https://ruby-doc.org/core-2.2.0/Array.html#method-i-zip)
+- [Ruby Doc - Array#zip](https://ruby-doc.org/core-2.2.0/Array.html#method-i-zip)
 
 [⬆ Back to top](#30-seconds-of-ruby)
 
@@ -733,7 +738,7 @@ irb> alphabet | ['c']
  => ["a", "b", "c"]
 ```
 
-We can also assign more then one element at the same time:
+We can also assign more than one element at the same time:
 
 ```bash
 irb> alphabet = ['a','b','c']
@@ -741,5 +746,35 @@ irb> alphabet = ['a','b','c']
 irb> alphabet | ['c','d']
  => ["a", "b", "c", "d"]
 ```
+
+[⬆ Back to top](#30-seconds-of-ruby)
+
+### Ruby's Benchmark
+
+The Benchmark module provides methods to measure and report the time used to execute Ruby code. This report shows the user CPU time, system CPU time, the sum of the user and system CPU times, and the elapsed real time. The unit of time is seconds. Consider following example:
+
+```ruby
+require 'benchmark'
+N = 1_000_000
+puts RUBY_DESCRIPTION
+Benchmark.bm(15, "concat/append") do |bm|
+  concat_report = bm.report("concat") { N.times { 'Hello' +  ' ' +  'World' } }
+  append_report = bm.report("append") { N.times { 'Hello' <<  ' ' <<  'World' } }
+  [concat_report / append_report]
+end
+```
+
+```bash
+~/: ruby concat_append_benchmark.rb
+ruby 2.4.4p296 (2018-03-28 revision 63013) [x86_64-darwin17]
+                      user     system      total        real
+concat            0.290000   0.000000   0.290000 (  0.608981)
+append            0.260000   0.000000   0.260000 (  0.362523)
+rescue/condition  1.115385        NaN        NaN (  1.679841)
+```
+
+##### Additional links
+
+- [Benchmark](https://ruby-doc.org/stdlib-2.5.0/libdoc/benchmark/rdoc/Benchmark.html)
 
 [⬆ Back to top](#30-seconds-of-ruby)
