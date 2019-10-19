@@ -6,13 +6,13 @@ Ruby snippets you can understand in 30 seconds or less.
 
 Inspired by [30-seconds-of-knowledge](https://github.com/petrovicstefanrs/30_seconds_of_knowledge/).
 
-<hr>
+[Element: hr]
 
 ## Snippets
 
 ### Ruby's Ancestor Chain
 
-Always wondered how to see Ruby's class hierarchy? Simply call `ancestors` on a class to see the ancestor chain.
+Always wondered how to see Ruby's class hierarchy? Simply call `ancestors` on aclass to see the ancestor chain.
 
 The return array contains the following order:
 
@@ -29,7 +29,7 @@ irb> String.ancestors
 => [String, Comparable, Object, Kernel, BasicObject]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Ancestors](https://ruby-doc.org/core-2.6.1/Module.html#method-i-ancestors)
 
@@ -88,7 +88,7 @@ irb> BasicObject.ancestors
  => [BasicObject]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - BasicObject](https://ruby-doc.org/core-1.9.3/BasicObject.html)
 
@@ -135,7 +135,7 @@ By using `dig` we follow **DRY** and retrieve the value of each key object by de
   => 2.4
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Hash#dig](https://ruby-doc.org/core-2.3.0_preview1/Hash.html#method-i-dig)
 
@@ -172,7 +172,7 @@ irb> user.has_key?('first_name')
  => true
 ```
 
-##### Additional links
+#### Additional links
 
 - [Awesome post about Ruby's conventions](https://blog.codeminer42.com/and-understanding-one-of-rubys-coolest-naming-conventions-5a9300b75605)
 
@@ -190,7 +190,7 @@ Famouse representative of the Kernel module are:
 - Hash
 - p, print and puts
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Kernel](https://ruby-doc.org/core-2.6.1/Kernel.html)
 
@@ -209,7 +209,7 @@ irb> method(:initialize).receiver
  => main
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - owner](https://apidock.com/ruby/v1_9_3_392/Method/owner)
 - [Ruby Doc - receiver](https://apidock.com/ruby/v1_9_3_392/Method/receiver)
@@ -239,7 +239,7 @@ irb> 14.digits(7)
  => [0, 2]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Integer#digits](https://ruby-doc.org/core-2.4.0/Integer.html#method-i-digits)
 
@@ -267,7 +267,7 @@ For a given hash it will return an array of the values associated with the given
    => ["$2.00"]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Array#values_at](https://apidock.com/ruby/Array/values_at)
 - [Ruby Doc - Hash#values_at](https://apidock.com/ruby/Hash/values_at)
@@ -301,7 +301,7 @@ irb> last
  => ["w", "z"]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Splat operators](https://medium.freecodecamp.org/rubys-splat-and-double-splat-operators-ceb753329a78)
 
@@ -408,7 +408,7 @@ irb > my_lambda.call(10)
  => "x = 10"
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Guides - Lambdas vs Procs](https://www.rubyguides.com/2016/02/ruby-procs-and-lambdas/)
 
@@ -498,7 +498,7 @@ irb> button.next
  => "off"
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Enumerable#cycle](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-cycle)
 
@@ -523,7 +523,7 @@ a.all?
  => false
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Enumerable#all?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-all-3F)
 
@@ -546,7 +546,7 @@ irb> (1..10).none?(&:nil?)
  => true
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Enumerable#none?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-none-3F)
 
@@ -590,7 +590,7 @@ irb> (1..4).one? { |n| n % 2 == 0 }
  => false
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Enumerable#one?](https://ruby-doc.org/core-2.6.1/Enumerable.html#method-i-one-3F)
 
@@ -621,7 +621,7 @@ irb> numbers.count(&:even?)
  => 3
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Array#count](https://ruby-doc.org/core-2.2.0/Array.html#method-i-count)
 
@@ -648,7 +648,7 @@ irb> a_dup << "d"
  => ["a", "b", "c", "d"]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - #clone](https://ruby-doc.org/core-2.0.0/Object.html#method-i-clone)
 - [Ruby Doc - #dup](https://ruby-doc.org/core-2.6.1/Object.html#method-i-dup)
@@ -677,7 +677,7 @@ irb> user.fetch(:email){ |e| "no #{e} added"}
  => "no email added"
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Hash#fetch](https://ruby-doc.org/core-2.2.0/Hash.html#method-i-fetch)
 
@@ -702,7 +702,7 @@ irb> first_names.zip(last_names)
  => [["George", "Massy"], ["Marcus", "Windmil"], ["Brian", nil]]
 ```
 
-##### Additional links
+#### Additional links
 
 - [Ruby Doc - Array#zip](https://ruby-doc.org/core-2.2.0/Array.html#method-i-zip)
 
@@ -751,7 +751,7 @@ irb> alphabet | ['c','d']
 
 ### Ruby's Benchmark
 
-The Benchmark module provides methods to measure and report the time used to execute Ruby code. This report shows the user CPU time, system CPU time, the sum of the user and system CPU times, and the elapsed real time. The unit of time is seconds. Consider following example:
+The Benchmark module provides methods to measure and report the time used to execute Ruby code. This report shows the user CPU time, system CPU time, the sum of the user and system CPU times, and the elapsed real time. The unit of time is seconds. Consider the following example:
 
 ```ruby
 require 'benchmark'
@@ -773,7 +773,7 @@ append            0.260000   0.000000   0.260000 (  0.362523)
 rescue/condition  1.115385        NaN        NaN (  1.679841)
 ```
 
-##### Additional links
+#### Additional links
 
 - [Benchmark](https://ruby-doc.org/stdlib-2.5.0/libdoc/benchmark/rdoc/Benchmark.html)
 
