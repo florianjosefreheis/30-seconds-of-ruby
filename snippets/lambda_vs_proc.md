@@ -1,4 +1,4 @@
-### lamba vs. proc
+### lambda vs. proc
 
 A **lambda** is a way to define a block & its parameters with some special syntax. You can save this **lambda** into a variable for later use.
 
