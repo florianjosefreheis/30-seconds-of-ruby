@@ -29,13 +29,13 @@ Logger levels are:
 Default log format is:
 
 ```bash
-SeverityID, [DateTime #pid] SeverityLabel -- ProgName: message
+SeverityID, [DateTime pid] SeverityLabel -- ProgName: message
 ```
 
 For instance:
 
 ```bash
-I, [1999-03-03T02:34:24.895701 #19074]  INFO -- Main: info.
+I, [1999-03-03T02:34:24.895701 19074]  INFO -- Main: info.
 ```
 
 #### Additional links

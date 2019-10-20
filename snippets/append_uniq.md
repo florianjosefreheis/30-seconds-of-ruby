@@ -15,7 +15,7 @@ irb> array.uniq
 => [1, 2]
 ```
 
-An ohter way is to only append an element if the array does not contain it already by using the **|**.
+An ohter way is to only append an element if the array does not contain it already by using the **'|'**.
 
 ```bash
 irb> array = []
